@@ -1,0 +1,691 @@
+[{
+  "year": 2010,
+  "agency_name": "Department of Corrections",
+  "fte": 7349.63,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "Department of Corrections",
+  "fte": 7507,
+  "expenditure": 0
+}, {
+  "year": 2012,
+  "agency_name": "Department of Corrections",
+  "fte": 7408.22,
+  "expenditure": 1169257000
+}, {
+  "year": 2013,
+  "agency_name": "Department of Corrections",
+  "fte": 7550.27,
+  "expenditure": 1157843000
+}, {
+  "year": 2014,
+  "agency_name": "Department of Corrections",
+  "fte": 7555.43,
+  "expenditure": 1189125000
+}, {
+  "year": 2010,
+  "agency_name": "New Zealand Customs Service",
+  "fte": 1152.95,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "New Zealand Customs Service",
+  "fte": 1141.42,
+  "expenditure": 0
+}, {
+  "year": 2012,
+  "agency_name": "New Zealand Customs Service",
+  "fte": 1170.8,
+  "expenditure": 140539000
+}, {
+  "year": 2013,
+  "agency_name": "New Zealand Customs Service",
+  "fte": 1144,
+  "expenditure": 153517000
+}, {
+  "year": 2014,
+  "agency_name": "New Zealand Customs Service",
+  "fte": 1097.07,
+  "expenditure": 163939000
+}, {
+  "year": 2010,
+  "agency_name": "Department of Building and Housing",
+  "fte": 320,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "Department of Building and Housing",
+  "fte": 354.83,
+  "expenditure": 0
+}, {
+  "year": 2012,
+  "agency_name": "Department of Building and Housing",
+  "fte": 395.52,
+  "expenditure": 82950000
+}, {
+  "year": 2010,
+  "agency_name": "Department of Internal Affairs",
+  "fte": 1493.25,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "Department of Internal Affairs",
+  "fte": 1743.75,
+  "expenditure": 0
+}, {
+  "year": 2012,
+  "agency_name": "Department of Internal Affairs",
+  "fte": 1927.85,
+  "expenditure": 353948000
+}, {
+  "year": 2013,
+  "agency_name": "Department of Internal Affairs",
+  "fte": 1993,
+  "expenditure": 367924000
+}, {
+  "year": 2014,
+  "agency_name": "Department of Internal Affairs",
+  "fte": 2046.1,
+  "expenditure": 398268000
+}, {
+  "year": 2010,
+  "agency_name": "Department of Conservation",
+  "fte": 1853,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "Department of Conservation",
+  "fte": 1843,
+  "expenditure": 0
+}, {
+  "year": 2012,
+  "agency_name": "Department of Conservation",
+  "fte": 1638.9,
+  "expenditure": 325647000
+}, {
+  "year": 2013,
+  "agency_name": "Department of Conservation",
+  "fte": 1616.74,
+  "expenditure": 322524000
+}, {
+  "year": 2014,
+  "agency_name": "Department of Conservation",
+  "fte": 1645.12,
+  "expenditure": 345000000
+}, {
+  "year": 2010,
+  "agency_name": "Department of Labour",
+  "fte": 2166.2,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "Department of Labour",
+  "fte": 2138.2,
+  "expenditure": 303356000
+}, {
+  "year": 2012,
+  "agency_name": "Department of Labour",
+  "fte": 2146.97,
+  "expenditure": 295708000
+}, {
+  "year": 2010,
+  "agency_name": "Inland Revenue",
+  "fte": 5663,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "Inland Revenue",
+  "fte": 5663,
+  "expenditure": -17926000
+}, {
+  "year": 2012,
+  "agency_name": "Inland Revenue",
+  "fte": 5526,
+  "expenditure": 629152000
+}, {
+  "year": 2013,
+  "agency_name": "Inland Revenue",
+  "fte": 5364,
+  "expenditure": 656025000
+}, {
+  "year": 2014,
+  "agency_name": "Inland Revenue",
+  "fte": 5626,
+  "expenditure": 699554000
+}, {
+  "year": 2010,
+  "agency_name": "Land Information New Zealand",
+  "fte": 503.88,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "Land Information New Zealand",
+  "fte": 474.02,
+  "expenditure": 0
+}, {
+  "year": 2012,
+  "agency_name": "Land Information New Zealand",
+  "fte": 428.5,
+  "expenditure": 101624000
+}, {
+  "year": 2013,
+  "agency_name": "Land Information New Zealand",
+  "fte": 473.6,
+  "expenditure": 94848000
+}, {
+  "year": 2014,
+  "agency_name": "Land Information New Zealand",
+  "fte": 469.18,
+  "expenditure": 102651000
+}, {
+  "year": 2013,
+  "agency_name": "Ministry of Business Innovation and Employment",
+  "fte": 2990,
+  "expenditure": 558497000
+}, {
+  "year": 2014,
+  "agency_name": "Ministry of Business Innovation and Employment",
+  "fte": 3104.43,
+  "expenditure": 579479000
+}, {
+  "year": 2010,
+  "agency_name": "Ministry for Culture and Heritage",
+  "fte": 102.75,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "Ministry for Culture and Heritage",
+  "fte": 110,
+  "expenditure": 0
+}, {
+  "year": 2012,
+  "agency_name": "Ministry for Culture and Heritage",
+  "fte": 122.1,
+  "expenditure": 27516000
+}, {
+  "year": 2013,
+  "agency_name": "Ministry for Culture and Heritage",
+  "fte": 118.3,
+  "expenditure": 24735000
+}, {
+  "year": 2014,
+  "agency_name": "Ministry for Culture and Heritage",
+  "fte": 105.1,
+  "expenditure": 21011000
+}, {
+  "year": 2010,
+  "agency_name": "Ministry of Economic Development",
+  "fte": 699.4,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "Ministry of Economic Development",
+  "fte": 672.9,
+  "expenditure": 151155000
+}, {
+  "year": 2012,
+  "agency_name": "Ministry of Economic Development",
+  "fte": 739.9,
+  "expenditure": 144225000
+}, {
+  "year": 2010,
+  "agency_name": "Ministry of Foreign Affairs and Trade",
+  "fte": 1521,
+  "expenditure": 360452000
+}, {
+  "year": 2011,
+  "agency_name": "Ministry of Foreign Affairs and Trade",
+  "fte": 1489,
+  "expenditure": 370129000
+}, {
+  "year": 2012,
+  "agency_name": "Ministry of Foreign Affairs and Trade",
+  "fte": 1432.4,
+  "expenditure": 361265000
+}, {
+  "year": 2013,
+  "agency_name": "Ministry of Foreign Affairs and Trade",
+  "fte": 1307.2,
+  "expenditure": 342631000
+}, {
+  "year": 2014,
+  "agency_name": "Ministry of Foreign Affairs and Trade",
+  "fte": 1340.9,
+  "expenditure": 360615000
+}, {
+  "year": 2010,
+  "agency_name": "Ministry for the Environment",
+  "fte": 288.25,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "Ministry for the Environment",
+  "fte": 296.82,
+  "expenditure": 0
+}, {
+  "year": 2012,
+  "agency_name": "Ministry for the Environment",
+  "fte": 270.5,
+  "expenditure": 50862000
+}, {
+  "year": 2013,
+  "agency_name": "Ministry for the Environment",
+  "fte": 277.7,
+  "expenditure": 52392000
+}, {
+  "year": 2014,
+  "agency_name": "Ministry for the Environment",
+  "fte": 299.8,
+  "expenditure": 50561000
+}, {
+  "year": 2010,
+  "agency_name": "Ministry of Education",
+  "fte": 2455.86,
+  "expenditure": 2335063000
+}, {
+  "year": 2011,
+  "agency_name": "Ministry of Education",
+  "fte": 2474.21,
+  "expenditure": 2252007000
+}, {
+  "year": 2012,
+  "agency_name": "Ministry of Education",
+  "fte": 2324.36,
+  "expenditure": 2254796000
+}, {
+  "year": 2013,
+  "agency_name": "Ministry of Education",
+  "fte": 2569.81,
+  "expenditure": 2369256000
+}, {
+  "year": 2014,
+  "agency_name": "Ministry of Education",
+  "fte": 2663.8,
+  "expenditure": 2516756000
+}, {
+  "year": 2010,
+  "agency_name": "Ministry of Health",
+  "fte": 1451,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "Ministry of Health",
+  "fte": 1290,
+  "expenditure": 0
+}, {
+  "year": 2012,
+  "agency_name": "Ministry of Health",
+  "fte": 1200,
+  "expenditure": 191622000
+}, {
+  "year": 2013,
+  "agency_name": "Ministry of Health",
+  "fte": 1081.23,
+  "expenditure": 176280000
+}, {
+  "year": 2014,
+  "agency_name": "Ministry of Health",
+  "fte": 1112.68,
+  "expenditure": 188505000
+}, {
+  "year": 2010,
+  "agency_name": "Ministry of Justice",
+  "fte": 3542,
+  "expenditure": 618124000
+}, {
+  "year": 2011,
+  "agency_name": "Ministry of Justice",
+  "fte": 3400.73,
+  "expenditure": 627898000
+}, {
+  "year": 2012,
+  "agency_name": "Ministry of Justice",
+  "fte": 3799,
+  "expenditure": 532612000
+}, {
+  "year": 2013,
+  "agency_name": "Ministry of Justice",
+  "fte": 3798,
+  "expenditure": 565927000
+}, {
+  "year": 2014,
+  "agency_name": "Ministry of Justice",
+  "fte": 3839,
+  "expenditure": 581031000
+}, {
+  "year": 2010,
+  "agency_name": "Ministry of Transport",
+  "fte": 169.4,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "Ministry of Transport",
+  "fte": 156.8,
+  "expenditure": 0
+}, {
+  "year": 2012,
+  "agency_name": "Ministry of Transport",
+  "fte": 149.9,
+  "expenditure": 48878000
+}, {
+  "year": 2013,
+  "agency_name": "Ministry of Transport",
+  "fte": 144,
+  "expenditure": 30286000
+}, {
+  "year": 2014,
+  "agency_name": "Ministry of Transport",
+  "fte": 145.59,
+  "expenditure": 33651000
+}, {
+  "year": 2010,
+  "agency_name": "Ministry for Primary Industries",
+  "fte": 1764.55,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "Ministry for Primary Industries",
+  "fte": 1733.93,
+  "expenditure": 0
+}, {
+  "year": 2012,
+  "agency_name": "Ministry for Primary Industries",
+  "fte": 2096,
+  "expenditure": 377564000
+}, {
+  "year": 2013,
+  "agency_name": "Ministry for Primary Industries",
+  "fte": 2108,
+  "expenditure": 376869000
+}, {
+  "year": 2014,
+  "agency_name": "Ministry for Primary Industries",
+  "fte": 2183.86,
+  "expenditure": 397254000
+}, {
+  "year": 2010,
+  "agency_name": "Ministry of Social Development",
+  "fte": 9427,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "Ministry of Social Development",
+  "fte": 9461,
+  "expenditure": 0
+}, {
+  "year": 2012,
+  "agency_name": "Ministry of Social Development",
+  "fte": 9223,
+  "expenditure": 1156046000
+}, {
+  "year": 2013,
+  "agency_name": "Ministry of Social Development",
+  "fte": 9450,
+  "expenditure": 1202195000
+}, {
+  "year": 2014,
+  "agency_name": "Ministry of Social Development",
+  "fte": 10030,
+  "expenditure": 1249518000
+}, {
+  "year": 2010,
+  "agency_name": "Ministry of Fisheries",
+  "fte": 427.03,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "Ministry of Fisheries",
+  "fte": 428.3,
+  "expenditure": 0
+}, {
+  "year": 2010,
+  "agency_name": "New Zealand Fire Service Commission",
+  "fte": 2241,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "New Zealand Fire Service Commission",
+  "fte": 2264.7,
+  "expenditure": 0
+}, {
+  "year": 2012,
+  "agency_name": "New Zealand Fire Service Commission",
+  "fte": 2249,
+  "expenditure": 0
+}, {
+  "year": 2013,
+  "agency_name": "New Zealand Fire Service Commission",
+  "fte": 2261,
+  "expenditure": 0
+}, {
+  "year": 2014,
+  "agency_name": "New Zealand Fire Service Commission",
+  "fte": 2291.75,
+  "expenditure": 0
+}, {
+  "year": 2010,
+  "agency_name": "New Zealand Police",
+  "fte": 11875,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "New Zealand Police",
+  "fte": 11922,
+  "expenditure": 0
+}, {
+  "year": 2012,
+  "agency_name": "New Zealand Police",
+  "fte": 12025.93,
+  "expenditure": 1471431000
+}, {
+  "year": 2013,
+  "agency_name": "New Zealand Police",
+  "fte": 11710,
+  "expenditure": 1481098000
+}, {
+  "year": 2014,
+  "agency_name": "New Zealand Police",
+  "fte": 11700.09,
+  "expenditure": 1491177000
+}, {
+  "year": 2010,
+  "agency_name": "New Zealand Defence Force",
+  "fte": 12666,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "New Zealand Defence Force",
+  "fte": 11891,
+  "expenditure": 0
+}, {
+  "year": 2012,
+  "agency_name": "New Zealand Defence Force",
+  "fte": 10961,
+  "expenditure": 2162678000
+}, {
+  "year": 2013,
+  "agency_name": "New Zealand Defence Force",
+  "fte": 11165,
+  "expenditure": 2217730000
+}, {
+  "year": 2014,
+  "agency_name": "New Zealand Defence Force",
+  "fte": 11523,
+  "expenditure": 2223998000
+}, {
+  "year": 2010,
+  "agency_name": "New Zealand Transport Agency",
+  "fte": 1356,
+  "expenditure": 1881462000
+}, {
+  "year": 2011,
+  "agency_name": "New Zealand Transport Agency",
+  "fte": 1325,
+  "expenditure": 1855632000
+}, {
+  "year": 2012,
+  "agency_name": "New Zealand Transport Agency",
+  "fte": 1347.6,
+  "expenditure": 1842090000
+}, {
+  "year": 2013,
+  "agency_name": "New Zealand Transport Agency",
+  "fte": 1379.8,
+  "expenditure": 1874281000
+}, {
+  "year": 2014,
+  "agency_name": "New Zealand Transport Agency",
+  "fte": 1344,
+  "expenditure": 1960058000
+}, {
+  "year": 2010,
+  "agency_name": "New Zealand Trade and Enterprise",
+  "fte": 544.51,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "New Zealand Trade and Enterprise",
+  "fte": 519,
+  "expenditure": 0
+}, {
+  "year": 2012,
+  "agency_name": "New Zealand Trade and Enterprise",
+  "fte": 496.61,
+  "expenditure": 0
+}, {
+  "year": 2013,
+  "agency_name": "New Zealand Trade and Enterprise",
+  "fte": 527.8,
+  "expenditure": 0
+}, {
+  "year": 2014,
+  "agency_name": "New Zealand Trade and Enterprise",
+  "fte": 546.8,
+  "expenditure": 0
+}, {
+  "year": 2010,
+  "agency_name": "State Services Commission",
+  "fte": 161,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "State Services Commission",
+  "fte": 112.3,
+  "expenditure": 0
+}, {
+  "year": 2012,
+  "agency_name": "State Services Commission",
+  "fte": 107.1,
+  "expenditure": 29932000
+}, {
+  "year": 2013,
+  "agency_name": "State Services Commission",
+  "fte": 111.75,
+  "expenditure": 26538000
+}, {
+  "year": 2014,
+  "agency_name": "State Services Commission",
+  "fte": 110.34,
+  "expenditure": 27524000
+}, {
+  "year": 2010,
+  "agency_name": "Statistics New Zealand",
+  "fte": 936,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "Statistics New Zealand",
+  "fte": 883.82,
+  "expenditure": 132845000
+}, {
+  "year": 2012,
+  "agency_name": "Statistics New Zealand",
+  "fte": 888.46,
+  "expenditure": 102823000
+}, {
+  "year": 2013,
+  "agency_name": "Statistics New Zealand",
+  "fte": 1010.68,
+  "expenditure": 163316000
+}, {
+  "year": 2014,
+  "agency_name": "Statistics New Zealand",
+  "fte": 950.26,
+  "expenditure": 120739000
+}, {
+  "year": 2010,
+  "agency_name": "Te Puni Kokiri",
+  "fte": 303,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "Te Puni Kokiri",
+  "fte": 348.1,
+  "expenditure": 0
+}, {
+  "year": 2012,
+  "agency_name": "Te Puni Kokiri",
+  "fte": 343.3,
+  "expenditure": 58262000
+}, {
+  "year": 2013,
+  "agency_name": "Te Puni Kokiri",
+  "fte": 330,
+  "expenditure": 58433000
+}, {
+  "year": 2014,
+  "agency_name": "Te Puni Kokiri",
+  "fte": 298.9,
+  "expenditure": 61433000
+}, {
+  "year": 2010,
+  "agency_name": "New Zealand Tourism Board",
+  "fte": 134.38,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "New Zealand Tourism Board",
+  "fte": 129.45,
+  "expenditure": 0
+}, {
+  "year": 2012,
+  "agency_name": "New Zealand Tourism Board",
+  "fte": 116,
+  "expenditure": 0
+}, {
+  "year": 2013,
+  "agency_name": "New Zealand Tourism Board",
+  "fte": 116.57,
+  "expenditure": 0
+}, {
+  "year": 2014,
+  "agency_name": "New Zealand Tourism Board",
+  "fte": 152.98,
+  "expenditure": 0
+}, {
+  "year": 2010,
+  "agency_name": "The Treasury",
+  "fte": 339,
+  "expenditure": 0
+}, {
+  "year": 2011,
+  "agency_name": "The Treasury",
+  "fte": 366,
+  "expenditure": 0
+}, {
+  "year": 2012,
+  "agency_name": "The Treasury",
+  "fte": 371,
+  "expenditure": 78105000
+}, {
+  "year": 2013,
+  "agency_name": "The Treasury",
+  "fte": 388.5,
+  "expenditure": 84212000
+}, {
+  "year": 2014,
+  "agency_name": "The Treasury",
+  "fte": 425.95,
+  "expenditure": 92647000
+}]

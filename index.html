@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> </title>
+
+  <!-- bootstrap -->
+  <script src="vendor/jquery/dist/jquery.js"></script>
+  <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css" />
+  <script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+
+
+  <!-- dcjs -->
+  <script src="vendor/d3/d3.js"></script>
+  <script src="vendor/crossfilter/crossfilter.js"></script>
+  <link rel="stylesheet" href="vendor/dcjs/dc.css" />
+  <script src="vendor/dcjs/dc.js"></script>
+
+  <!-- other libraries -->
+  <script src="vendor/underscore/underscore.js"></script>
+  <script src="vendor/queue-async/queue.js"></script>
+
+  <!-- this visualisation -->
+  <link rel="stylesheet" href="css/index.css">
+  <script src="js/splitChart.js"></script>
+  <script src="js/index.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">BASS</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">Light Theme</a></li>
+          <li><a href="/dark_theme.html">Dark Theme</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li id="resetAll"></li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="border col-xs-12" id='agency'>
+          <legend>Agencies (Total cost of A&S functions by cohort size)
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-xs btn-default active">
+                <input type="radio" name="agency_background" checked="true" value="Agency">Agency
+              </label>
+              <label class="btn btn-xs btn-default">
+                <input type="radio" name="agency_background" value="Metrics">Metrics
+              </label>
+              <label class="btn btn-xs btn-default">
+                <input type="radio" name="agency_background" value="Subcosts">Subcosts
+              </label>
+            </div>
+            <a class="reset hidden" id="agencyReset">Reset</a>
+          </legend>
+          <div class="col-xs-6 col-sm-3" id="smallAgencies">
+            <small class='h5'>Small</small>
+          </div>
+          <div class="col-xs-6 col-sm-3" id="mediumAgencies">
+            <small class='h5'>Medium</small>
+          </div>
+          <div class="col-xs-12 col-sm-6" id="largeAgencies">
+            <small class='h5'>Large</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="border clearfix">
+          <div class="col-xs-6" id="year">
+            <legend>Year
+              <a class="reset" href="javascript:year_chart.filterAll();dc.redrawAll()" style="display:none">Reset</a>
+            </legend>
+          </div>
+          <div class="col-xs-6" id="cohort">
+            <legend>Cohort
+              <a class="reset" href="javascript:cohort_chart.filterAll();dc.redrawAll()" style="display:none">Reset</a>
+            </legend>
+          </div>
+          <div class="col-xs-12" id="metric">
+            <legend>Metric
+              <a class="reset" href="javascript:metric_chart.filterAll();dc.redrawAll()" style="display:none">Reset</a>
+            </legend>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12  col-sm-8" id="subcosts">
+        <div class="col-xs-12 border">
+          <legend>Subcosts
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-xs btn-default active">
+                <input type="radio" name="subcost_background" checked="true" value="Subcost">Subcost
+              </label>
+              <label class="btn btn-xs btn-default">
+                <input type="radio" name="subcost_background" value="Agencies">Agencies
+              </label>
+            </div>
+            <a class="reset hidden" id="subcostReset">Reset</a>
+          </legend>
+          <div class="col-xs-4" id="hr_subcosts">
+            <small class='h5'>HR Subcosts</small>
+          </div>
+          <div class="col-xs-4" id="finance_subcosts">
+            <small class='h5'>Finance Subcosts</small>
+          </div>
+          <div class="col-xs-4" id="procurement_subcosts">
+            <small class='h5'>Procurement Subcosts</small>
+          </div>
+          <div class="col-xs-6" id="ict_subcosts">
+            <small class='h5'>ICT Subcosts</small>
+          </div>
+          <div class="col-xs-6" id="ces_subcosts">
+            <small class='h5'>CES Subcosts</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div id="fte_expenditure" class="col-xs-12 border">
+          <legend>FTE vs Expenditure (by cohort size)
+            <a class="reset hidden" id="scatterReset">Reset</a>
+          </legend>
+          <div class="col-xs-6 col-sm-4" id="smallAgenciesScatter">
+            <small class='h5'>Small</small>
+          </div>
+          <div class="col-xs-6 col-sm-4" id="mediumAgenciesScatter">
+            <small class='h5'>Medium</small>
+          </div>
+          <div class="col-xs-12 col-sm-4" id="largeAgenciesScatter">
+            <small class='h5'>Large</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

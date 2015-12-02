@@ -37,8 +37,8 @@ function d3_format_precision(x, p) {
 }
 
 queue()
-  .defer(d3.json, "/data/main_data.json")
-  .defer(d3.json, "/data/fte_expenditure_data.json")
+  .defer(d3.json, "data/main_data.json")
+  .defer(d3.json, "data/fte_expenditure_data.json")
   .await(showCharts);
 
 function ColorLuminance(hex, lum) {

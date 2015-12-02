@@ -389,14 +389,22 @@ function showCharts(error, main_data, fte_expenditure_data) {
 
   year_dim = ndx.dimension(dc.pluck("year"));
   year_group = year_dim.group().reduceSum(dc.pluck('val'));
-  year_chart = dc.pieChart("#year").options({
+  year_chart = dc.rowChart("#year").options({
     dimension: year_dim,
     group: year_group,
     height: 150,
+    elasticX: true,
     title: function(d) {
       return d.key + ": " + d3.format("$,")(d.value);
-    }
+    },
+    width: function(root) {
+      return root.offsetWidth -
+        (Number($(root).css('padding-left').slice(0,-2)) +
+         Number($(root).css('padding-right').slice(0,-2)));
+    },
+    margins: {top: 0, right: 15, bottom: 20, left: 15}
   });
+  year_chart.xAxis().tickFormat(d3.format("$s")).ticks(3);
 
   metric_colors = d3.scale.ordinal().range(
     ["#2ca02c", "#ff7f0e", "#9467bd", "#d62728", "#1f77b4"]

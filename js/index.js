@@ -1,6 +1,44 @@
+// Change D3's SI prefix to more business friendly units
+//      K = thousands
+//      M = millions
+//      B = billions
+//      T = trillion
+//      P = quadrillion
+//      E = quintillion
+// small decimals are handled with e-n formatting.
+var d3_formatPrefixes = ["e-24","e-21","e-18","e-15","e-12","e-9","e-6","e-3","","K","M","B","T","P","E","Z","Y"].map(d3_formatPrefix);
+
+// Override d3's formatPrefix function
+d3.formatPrefix = function(value, precision) {
+    var i = 0;
+    if (value) {
+        if (value < 0) {
+            value *= -1;
+        }
+        if (precision) {
+            value = d3.round(value, d3_format_precision(value, precision));
+        }
+        i = 1 + Math.floor(1e-12 + Math.log(value) / Math.LN10);
+        i = Math.max(-24, Math.min(24, Math.floor((i - 1) / 3) * 3));
+    }
+    return d3_formatPrefixes[8 + i / 3];
+};
+
+function d3_formatPrefix(d, i) {
+    var k = Math.pow(10, Math.abs(8 - i) * 3);
+    return {
+        scale: i > 8 ? function(d) { return d / k; } : function(d) { return d * k; },
+        symbol: d
+    };
+}
+
+function d3_format_precision(x, p) {
+    return p - (x ? Math.ceil(Math.log(x) / Math.LN10) : 1);
+}
+
 queue()
-  .defer(d3.json, "data/main_data.json")
-  .defer(d3.json, "data/fte_expenditure_data.json")
+  .defer(d3.json, "/data/main_data.json")
+  .defer(d3.json, "/data/fte_expenditure_data.json")
   .await(showCharts);
 
 function ColorLuminance(hex, lum) {
@@ -22,11 +60,9 @@ function ColorLuminance(hex, lum) {
 
   return rgb;
 }
-
 function generateGradiantId(data_key) {
   return data_key.replace(/ /g, '_');
 }
-
 function addOrUpdateGradiant(chart, gradId, stops) {
   var defs = chart.svg().select('defs');
   if (defs.size() === 0) {
@@ -60,7 +96,6 @@ function addOrUpdateGradiant(chart, gradId, stops) {
     }
   }).remove();
 }
-
 function populateStopsFromData(data, colors) {
   var total = 0;
   var percents = data.filter(function(d) {
@@ -92,13 +127,13 @@ function populateStopsFromData(data, colors) {
   });
   return stops;
 }
-
 function generateSubcostId(key) {
-  return (key.split(' ')[0].slice(1, -1) + "_" + key.split('] ')[1].replace(
-    /[\(\),]/g, '').replace(/ /g, '_')).toLowerCase();
+  return (key.split(' ')[0].slice(1, -1) + "_" + key.split('] ')[1].replace(/[\(\),]/g, '').replace(/ /g, '_')).toLowerCase();
 }
 
 function showCharts(error, main_data, fte_expenditure_data) {
+  md = main_data;
+  fed = fte_expenditure_data;
   metric_key = {
     '37': 'HR',
     '126': 'Finance',
@@ -133,8 +168,7 @@ function showCharts(error, main_data, fte_expenditure_data) {
     "#ff9900", "#109618", "#990099", "#0099c6", "#dd4477", "#66aa00",
     "#b82e2e", "#316395", "#994499", "#22aa99", "#156a60", "#600060",
     "#8a240b", "#8a2b4a", "#1f3e5d", "#00607c", "#9f6000", "#0a5e0f",
-    "#602b60"
-  ]);
+    "#602b60"]);
 
   var cohortToIndex = {
     small: 0,
@@ -143,12 +177,12 @@ function showCharts(error, main_data, fte_expenditure_data) {
   };
   agency_dimension = ndx.dimension(dc.pluck('agency_name'));
   agency_group = agency_dimension.group().reduce(
-    function(p, v) {
+    function(p,v) {
       var subcost = v.subcost_type;
       if (typeof p[subcost] !== "function") {
         p[v.subcost_type] = function() {
           var data;
-          if (typeof this === "function") {
+          if(typeof this === "function") {
             data = this[subcost];
           } else {
             data = this.value;
@@ -158,10 +192,10 @@ function showCharts(error, main_data, fte_expenditure_data) {
           }, 0);
         };
       }
-      p[subcost][v.metric] = (p[subcost][v.metric] || 0) + v.val;
+      p[subcost][v.metric] = (p[subcost][v.metric] || 0)+v.val;
       return p;
     },
-    function(p, v) {
+    function(p,v) {
       p[v.subcost_type][v.metric] -= v.val;
       return p;
     },
@@ -194,47 +228,40 @@ function showCharts(error, main_data, fte_expenditure_data) {
     title: function(d) {
       var output = d.key + ": " + d3.format("$,")(d.value());
       var selected = $('#agency input:radio:checked').val();
-      if (selected !== 'Agency') {
+      if(selected !== 'Agency') {
         var initial_length = output.length;
         output += "\n";
         var total = d.value();
         var data;
-        if (selected === 'Metrics') {
-          data = d3.entries(d.value).sort(function(a, b) {
+        if(selected === 'Metrics') {
+          data = d3.entries(d.value).sort(function(a,b) {
             return d3.descending(a.value(), b.value());
           }).forEach(function(d) {
-            if (d.value() > 0) {
-              var info = d.key + ": " + d3.format("%")(d.value() /
-                total);
-              output += "\n" + info + " (" + d3.format("$s.g")(d.value()) +
-                ")";
+            if(d.value()>0) {
+              var info = d.key+": "+d3.format("%")(d.value()/total);
+              output += "\n"+info+" ("+d3.format("$s.g")(d.value())+")";
             }
           });
-        } else if (selected === 'Subcosts') {
+        } else if(selected === 'Subcosts') {
           var other = 0;
           data = d3.entries(d.value).map(function(d) {
             var subcost = d.key;
             return d3.entries(d.value).map(function(d) {
-              d.key = "[" + subcost + "] " + d.key;
+              d.key = "["+subcost+"] "+d.key;
               return d;
             });
-          }).reduce(function(prev, cur) {
-            return prev.concat(cur);
-          }).sort(function(a, b) {
+          }).reduce(function(prev,cur) {return prev.concat(cur);}).sort(function(a,b) {
             return d3.descending(a.value, b.value);
           }).forEach(function(d, i) {
-            if (d.value > 0) {
-              var info = d.key + ": " + d3.format("%")(d.value /
-                total);
-              info = info.replace(/ \([a-zA-Z 0-9\/]*\)/g, '');
-              if (i < 5) output += "\n" + info + " (" + d3.format(
-                "$s.g")(d.value) + ")";
+            if(d.value>0) {
+              var info = d.key+": "+d3.format("%")(d.value/total);
+              info = info.replace(/ \([a-zA-Z 0-9\/]*\)/g,'');
+              if(i<5) output += "\n"+info+" ("+d3.format("$s.g")(d.value)+")";
               else other += d.value;
             }
           });
-          if (other > 0) {
-            output += "\n\nOther: " + d3.format("%")(other / total) +
-              " (" + d3.format("$s.g")(other) + ")";
+          if(other > 0) {
+            output += "\n\nOther: "+d3.format("%")(other/total)+" ("+d3.format("$s.g")(other)+")";
           }
         }
       }
@@ -243,9 +270,7 @@ function showCharts(error, main_data, fte_expenditure_data) {
     colorCalculator: function(d) {
       return 'url(#' + generateGradiantId(d.key) + ')';
     },
-    valueAccessor: function(d) {
-      return d.value();
-    }
+    valueAccessor: function(d) {return d.value();}
   }).apply(function(chart, i) {
     chart.xAxis().tickFormat(d3.format("$s"));
     chart.colors(agency_colors);
@@ -253,13 +278,11 @@ function showCharts(error, main_data, fte_expenditure_data) {
       var selected = $('#agency input:radio:checked').val();
 
       chart.svg().selectAll('g.row').each(function(d) {
-        if (d !== undefined && !d3.select(this).select('rect').classed(
-            'deselected')) {
+        if (d !== undefined) {
           chart.svg().selectAll('g.row text').attr({
             style: function(d) {
               var c = agency_colors(d.key);
-              return "text-shadow: 0 0 1px black, 0 0 2px " +
-                c + ", 0 0 3px black, 0 0 4px " + c + ";";
+              return "text-shadow: 0 0 1px black, 0 0 2px " + c + ", 0 0 3px black, 0 0 4px " + c + ";";
             }
           });
 
@@ -279,24 +302,23 @@ function showCharts(error, main_data, fte_expenditure_data) {
               data = d3.entries(d.value).map(function(d) {
                 d.value = d.value();
                 return d;
+              }).sort(function(a, b) {
+                return subcostTypeToIndex["["+a.key+"]"] - subcostTypeToIndex["["+b.key+"]"];
               });
               colors = metric_colors;
 
             } else if (selected == "Subcosts") {
               data = d3.entries(d.value).sort(function(a, b) {
-                return subcostTypeToIndex["[" + a.key + "]"] -
-                  subcostTypeToIndex["[" + b.key + "]"];
+                return subcostTypeToIndex["["+a.key+"]"] - subcostTypeToIndex["["+b.key+"]"];
               }).map(function(d) {
                 var subcost = d.key;
                 return d3.entries(d.value).sort(function(a, b) {
                   return d3.ascending(a.key, b.key);
                 }).map(function(d) {
-                  d.key = "[" + subcost + "] " + d.key;
+                  d.key = "["+subcost+"] "+d.key;
                   return d;
                 });
-              }).reduce(function(prev, cur) {
-                return prev.concat(cur);
-              });
+              }).reduce(function(prev,cur) {return prev.concat(cur);});
               colors = function(d) {
                 var idx = subcostTypeToIndex[d.split(' ')[0]];
                 return subcost_colors[idx](d);
@@ -304,8 +326,7 @@ function showCharts(error, main_data, fte_expenditure_data) {
             }
             stops = populateStopsFromData(data, colors);
           }
-          addOrUpdateGradiant(chart, generateGradiantId(d.key),
-            stops);
+          addOrUpdateGradiant(chart, generateGradiantId(d.key), stops);
         }
       });
     });
@@ -349,30 +370,30 @@ function showCharts(error, main_data, fte_expenditure_data) {
     }
   });
 
-  metric_colors = d3.scale.category10();
+  metric_colors = d3.scale.ordinal().range(
+    ["#2ca02c", "#ff7f0e", "#9467bd", "#d62728", "#1f77b4"]
+  );
   metric_dim = ndx.dimension(dc.pluck("subcost_type"));
   metric_group = metric_dim.group().reduceSum(dc.pluck('val'));
-  metric_chart = dc.pieChart("#metric")
-    .dimension(metric_dim)
-    .group(metric_group)
-    .height(200)
-    .title(function(d) {
-      return d.key + ": " + d3.format("$,")(d.value);
-    })
-    .legend(dc.legend().x(400).y(10).itemHeight(13).gap(5)).cx(215)
-    .colors(metric_colors);
-
+  metric_chart = dc.pieChart("#metric").options({
+    dimension: metric_dim,
+    group: metric_group,
+    height: 200,
+    title: function(d) { return d.key + ": " + d3.format("$,")(d.value); },
+    legend: dc.legend().x(400).y(10).itemHeight(13).gap(5),
+    cx: 215,
+    colors: metric_colors,
+    ordering: function(d) { return subcostTypeToIndex["["+d.key+"]"]; }
+  }).on('pretransition', function(chart) {
+    chart.svg().selectAll('.dc-legend-item').classed('disabled', function(d) {return d.data===0;});
+  });
 
   var subcost_colors = [
     d3.scale.ordinal().range(["#78c679", "#41ab5d", "#238443", "#006837"]),
     d3.scale.ordinal().range(["#fec44f", "#fe9929", "#ec7014", "#cc4c02"]),
     d3.scale.ordinal().range(["#9e9ac8", "#807dba", "#6a51a3", "#54278f"]),
-    d3.scale.ordinal().range(["#fb6a4a", "#ef3b2c", "#cb181d", "#a50f15",
-      "#67000d"
-    ]),
-    d3.scale.ordinal().range(["#d0d1e6", "#a6bddb", "#74a9cf", "#3690c0",
-      "#0570b0", "#045a8d", "#023858"
-    ])
+    d3.scale.ordinal().range(["#fb6a4a", "#ef3b2c", "#cb181d", "#a50f15", "#67000d"]),
+    d3.scale.ordinal().range(["#d0d1e6", "#a6bddb", "#74a9cf", "#3690c0", "#0570b0", "#045a8d", "#023858"])
   ];
   $('#subcosts input:radio').on('change', function() {
     subcost_charts.apply(function(chart) {
@@ -384,11 +405,11 @@ function showCharts(error, main_data, fte_expenditure_data) {
     return "[" + d.subcost_type + "] " + d.metric;
   });
   var subcost_group = subcost_dim.group().reduce(
-    function(p, v) {
-      p[v.agency_name] = (p[v.agency_name] || 0) + v.val;
+    function(p,v) {
+      p[v.agency_name] = (p[v.agency_name] || 0)+v.val;
       return p;
     },
-    function(p, v) {
+    function(p,v) {
       p[v.agency_name] -= v.val;
       return p;
     },
@@ -408,9 +429,7 @@ function showCharts(error, main_data, fte_expenditure_data) {
     "[ICT]": 3,
     "[CES]": 4
   };
-  var subcost_charts = splitRowChart(['#hr_subcosts', '#finance_subcosts',
-        '#procurement_subcosts', '#ict_subcosts', '#ces_subcosts'
-      ],
+  var subcost_charts = splitRowChart(['#hr_subcosts', '#finance_subcosts', '#procurement_subcosts', '#ict_subcosts', '#ces_subcosts'],
       function(d) {
         return subcostTypeToIndex[d.key.split(" ")[0]];
       },
@@ -418,32 +437,28 @@ function showCharts(error, main_data, fte_expenditure_data) {
       dimension: subcost_dim,
       group: subcost_group,
       elasticX: true,
-      valueAccessor: function(d) {
-        return d.value();
-      },
+      valueAccessor: function(d) {return d.value();},
       label: function(d) {
         return d.key.split(" ").slice(1).join(" ");
       },
       title: function(d) {
         var output = d.key + ": " + d3.format("$,")(d.value());
         var selected = $('#subcosts input:radio:checked').val();
-        if (selected === "Agencies") {
+        if(selected === "Agencies") {
           output += "\n";
           var other = 0;
           var total = d.value();
-          d3.entries(d.value).sort(function(a, b) {
+          d3.entries(d.value).sort(function(a,b) {
             return d3.descending(a.value, b.value);
-          }).forEach(function(d, i) {
-            if (d.value > 0) {
-              var info = d.key + ": " + d3.format("%")(d.value / total);
-              if (i < 5) output += "\n" + info + " (" + d3.format(
-                "$s.g")(d.value) + ")";
+          }).forEach(function(d,i) {
+            if(d.value > 0) {
+              var info = d.key+": "+d3.format("%")(d.value/total);
+              if(i<5) output += "\n"+info+" ("+d3.format("$s.g")(d.value)+")";
               else other += d.value;
             }
           });
-          if (other > 0) {
-            output += "\n\nOther: " + d3.format("%")(other / total) + " (" +
-              d3.format("$s.g")(other) + ")";
+          if(other > 0) {
+            output += "\n\nOther: "+d3.format("%")(other/total)+" ("+d3.format("$s.g")(other)+")";
           }
         }
         return output;
@@ -461,13 +476,11 @@ function showCharts(error, main_data, fte_expenditure_data) {
       chart.on('pretransition', function(chart) {
         var selected = $('#subcosts input:radio:checked').val();
         chart.svg().selectAll('g.row').each(function(d) {
-          if (d !== undefined && !d3.select(this).select('rect').classed(
-              'deselected')) {
+          if (d !== undefined) {
             chart.svg().selectAll('g.row text').attr({
               style: function(d) {
                 var c = subcost_colors[i](d.key);
-                return "text-shadow: 0 0 1px black, 0 0 2px " +
-                  c + ", 0 0 3px black, 0 0 4px " + c + ";";
+                return "text-shadow: 0 0 1px black, 0 0 2px " + c + ", 0 0 3px black, 0 0 4px " + c + ";";
               }
             });
             var stops;
@@ -481,20 +494,18 @@ function showCharts(error, main_data, fte_expenditure_data) {
               }];
             } else if (selected == "Agencies") {
               stops = populateStopsFromData(
-                d3.entries(d.value).sort(function(a, b) {
+                d3.entries(d.value).sort(function(a,b) {
                   var cohortIdxA = cohortToIndex[cohorts[a.key]];
                   var cohortIdxB = cohortToIndex[cohorts[b.key]];
-                  if (cohortIdxA == cohortIdxB) {
+                  if(cohortIdxA==cohortIdxB) {
                     //they're in the same cohort so sort alphbettically
                     return d3.ascending(a.key, b.key);
-                  } else return d3.ascending(cohortIdxA,
-                    cohortIdxB);
+                  } else return d3.ascending(cohortIdxA, cohortIdxB);
                 }),
                 agency_colors
               );
             }
-            addOrUpdateGradiant(chart, generateSubcostId(d.key),
-              stops);
+            addOrUpdateGradiant(chart,generateSubcostId(d.key),stops);
           }
         });
       });
@@ -504,12 +515,12 @@ function showCharts(error, main_data, fte_expenditure_data) {
 
   scatter_dim = ndx2.dimension(dc.pluck('agency_name'));
   scatter_group = scatter_dim.group().reduce(
-    function(p, v) {
+    function(p,v) {
       p.fte += v.fte;
       p.expenditure += v.expenditure;
       return p;
     },
-    function(p, v) {
+    function(p,v) {
       p.fte -= v.fte;
       p.expenditure -= v.expenditure;
       return p;
@@ -522,101 +533,77 @@ function showCharts(error, main_data, fte_expenditure_data) {
     }
   );
   scatter_group.all();
-  scatter_charts = splitChart(dc.bubbleChart, [
-    '#smallAgenciesScatter',
-    '#mediumAgenciesScatter',
-    '#largeAgenciesScatter'
-  ], function(d) {
-    return cohortToIndex[cohorts[d.key]];
-  }, '#scatterReset').options({
-    dimension: scatter_dim,
-    group: scatter_group,
-    x: d3.scale.linear(),
-    elasticX: true,
-    y: d3.scale.linear(),
-    elasticY: true,
-    keyAccessor: function(d) {
-      return d.value.expenditure;
-    },
-    valueAccessor: function(d) {
-      return Number(d.value.fte.toFixed(2));
-    },
-    colorAccessor: function(d) {
-      return d.key;
-    },
-    radiusValueAccessor: function(d) {
-      return 2.5;
-    },
-    margins: {
-      top: 10,
-      right: 50,
-      bottom: 30,
-      left: 50
-    },
-    colors: agency_colors,
-    height: 250,
-    clipPadding: 10,
-    symbolSize: 8,
-    title: function(d) {
-      return d.key + "\n\n" +
-        "Total Organisational FTE: " + d3.format('.2f')(d.value.fte) +
-        "\n" +
-        "Total Expenditure: " + d3.format('$,')(d.value.expenditure);
-    },
-    label: function() {
-      return undefined;
-    }
-  }).apply(function(chart) {
-    chart.MIN_RADIUS = 2.5;
-    chart.xAxis().tickFormat(d3.format("$s"));
-    chart.xAxis().ticks(8);
-    chart.on('pretransition', function(chart) {
-      var nodes = chart.svg().selectAll('.node').filter(function(d) {
-        return d.value.expenditure === 0 && Number(d.value.fte.toFixed(
-          2)) === 0;
+  scatter_charts = splitChart(dc.bubbleChart,
+    [
+      '#smallAgenciesScatter',
+      '#mediumAgenciesScatter',
+      '#largeAgenciesScatter'
+    ], function(d) {
+      return cohortToIndex[cohorts[d.key]];
+    }, '#scatterReset').options({
+      dimension: scatter_dim,
+      group: scatter_group,
+      x: d3.scale.linear(),
+      elasticX: true,
+      y: d3.scale.linear(),
+      elasticY: true,
+      keyAccessor: function(d) {return d.value.expenditure;},
+      valueAccessor: function(d) {return Number(d.value.fte.toFixed(2));},
+      colorAccessor: function(d) {return d.key;},
+      radiusValueAccessor: function(d) { return 2.5; },
+      margins: {top: 10, right: 50, bottom: 30, left: 50},
+      colors: agency_colors,
+      height: 250,
+      clipPadding: 10,
+      symbolSize: 8,
+      title: function(d) {
+        return d.key+"\n\n"+
+                "Total Organisational FTE: "+d3.format('.2f')(d.value.fte)+"\n"+
+                "Total Expenditure: "+d3.format('$,')(d.value.expenditure);
+      },
+      label: function() {return undefined;}
+    }).apply(function(chart) {
+      chart.MIN_RADIUS = 2.5;
+      chart.xAxis().tickFormat(d3.format("$s"));
+      chart.xAxis().ticks(8);
+      chart.on('pretransition', function(chart) {
+        var nodes = chart.svg().selectAll('.node').filter(function(d) {
+          return d.value.expenditure===0 && Number(d.value.fte.toFixed(2))===0;
+        });
+        nodes.remove();
       });
-      nodes.remove();
     });
-  });
 
 
   agency_dim = ndx.dimension(dc.pluck('agency_name'));
   var filtering_agency = false;
-  [{
-    chart: year_chart,
-    dim: ndx2.dimension(dc.pluck('year'))
-  }, {
-    chart: cohort_chart,
-    dim: ndx2.dimension(
-      function(d) {
-        return cohorts[d.agency_name];
-      }
-    )
-  }, {
-    chart: agency_charts,
-    dim: scatter_charts
-  }, {
-    chart: scatter_charts,
-    dim: agency_charts
-  }].forEach(function(obj) {
+  [
+    {chart: year_chart, dim: ndx2.dimension(dc.pluck('year'))},
+    {chart: cohort_chart, dim: ndx2.dimension(
+      function(d) {return cohorts[d.agency_name];}
+    )},
+    {chart: agency_charts, dim: scatter_charts},
+    {chart: scatter_charts, dim: agency_charts}
+  ].forEach(function(obj) {
     function onFiltered(chart) {
       var filters = chart.filters();
       obj.dim.filterAll();
-      if (filters.length > 0) {
+      if(filters.length>0) {
         obj.dim.filterFunction(function(d) {
           return filters.indexOf(d) !== -1;
         });
       }
     }
-    if (obj.chart.__dcFlag__ !== undefined) {
+    if(obj.chart.__dcFlag__ !== undefined) {
       obj.chart.on('filtered', onFiltered);
-    } else if (Array.isArray(obj.chart) && Array.isArray(obj.dim)) {
+    } else if(Array.isArray(obj.chart) && Array.isArray(obj.dim)) {
       obj.chart[0].on('filtered', function(chart) {
-        if (!filtering_agency) {
+        if(!filtering_agency) {
           filtering_agency = !filtering_agency;
           var other_chart = obj.dim[0];
-          other_chart.filterAll();
-          chart.filters().forEach(function(filter) {
+          _(other_chart.filters()).difference(chart.filters()).concat(
+            _(chart.filters()).difference(other_chart.filters())
+          ).forEach(function(filter) {
             other_chart.filter(filter);
           });
           filtering_agency = !filtering_agency;

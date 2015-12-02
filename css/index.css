@@ -75,6 +75,10 @@ body > .container-fluid > .row > div.col-xs-12:not(:first-child) {
   margin-top: 15px
 }
 
+.dc-legend-item.disabled {
+  fill:grey;
+  pointer-events: none;
+}
 
 
 
@@ -84,7 +88,7 @@ body > .container-fluid > .row > div.col-xs-12:not(:first-child) {
 body#dark {
   background: #444444;
 }
-#dark #resetAll > a, a.reset {
+#dark #resetAll > a, #dark a.reset {
   background: #444444;
   border-color:#101010;
 }
@@ -105,4 +109,7 @@ body#dark {
 }
 #dark .axis text {
     fill: #fefefe;
+}
+#dark .dc-chart .axis path, #dark .dc-chart .axis line {
+  stroke: #666;
 }

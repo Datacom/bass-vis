@@ -3,19 +3,18 @@ function splitChart(chartType, anchors, dataInWhichChart, reset_id) {
     var filters = chart.filters();
     charts.forEach(function(chart) {
       chart.on('filtered.filter_other_charts');
-      chart.filterAll();
-      filters.forEach(function(filter) {
+      _(filters).difference(chart.filters()).concat(
+        _(chart.filters()).difference(filters)
+      ).forEach(function(filter) {
         chart.filter(filter);
       });
+      chart.on('filtered.filter_other_charts', filter_other_charts);
     });
     hasFilters = filters.length !== 0;
     d3.selectAll(reset_id).classed("hidden", !hasFilters);
-    dim.filter(function(d) { return !hasFilters || filters.indexOf(d)!=-1;});
     dc.redrawAll();
-    charts.forEach(function(chart) {
-      chart.on('filtered.filter_other_charts', filter_other_charts);
-    });
   }
+
   var filter = true;
   var charts = anchors.map(function(anchor, index) {
     var chart = chartType(anchor)

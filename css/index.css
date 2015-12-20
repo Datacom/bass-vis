@@ -106,3 +106,13 @@ body#dark {
 #theme-toggle {
   padding: 7.5px 15px;
 }
+
+
+
+#dark select {
+    color: black;
+}
+#dark .y-axis-label, #dark .x-axis-label {
+  fill: white;
+  font-weight: bold;
+}

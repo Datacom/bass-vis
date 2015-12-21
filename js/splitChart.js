@@ -17,12 +17,12 @@ function splitChart(chartType, anchors, dataInWhichChart, reset_id) {
 
   var filter = true;
   var charts = anchors.map(function(anchor, index) {
-    var chart = chartType(anchor)
-    .data(function(group) {
+    var chart = chartType(anchor).data(function(group) {
       var data = group.all();
-      return data.filter(function(d) {
+      filteredData = data.filter(function(d) {
         return dataInWhichChart(d)==index;
       });
+      return filteredData.sort(function(a,b) {return chart.ordering()(a)-chart.ordering()(b);});
     });
     return chart;
   });

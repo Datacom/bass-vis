@@ -64,17 +64,28 @@
       </div>
       <div class="col-xs-9" style="padding-right: 0;padding-left: 7.5px;">
         <div class="border col-xs-12 clearfix" id="agency">
-          <legend>Agencies
+          <legend>Agencies by
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-xs btn-default active">
+                <input type="radio" name="split_type" checked="true" value="total_ict">Total ICT Costs
+              </label>
+              <label class="btn btn-xs btn-default">
+                <input type="radio" name="split_type" value="outsourcing">ICT Outsourcing
+              </label>
+              <!-- <label class="btn btn-xs btn-default">
+                <input type="radio" name="split_type" value="scatter">Scatter Chart Below
+              </label> -->
+            </div>
             <a class="reset hidden" id="agencyReset">Reset</a>
           </legend>
-          <div class="col-xs-6 col-sm-3" id="smallAgencies">
-            <small class='h5'>0</small>
+          <div class="col-xs-4" id="smallAgencies">
+            <small class='h5'>Lower</small>
           </div>
-          <div class="col-xs-6 col-sm-3" id="mediumAgencies">
-            <small class='h5'>1</small>
+          <div class="col-xs-4" id="mediumAgencies">
+            <small class='h5'>Middle</small>
           </div>
-          <div class="col-xs-12 col-sm-6" id="largeAgencies">
-            <small class='h5'>2</small>
+          <div class="col-xs-4" id="largeAgencies">
+            <small class='h5'>Upper</small>
           </div>
         </div>
       </div>

@@ -42,29 +42,78 @@ function showCharts(error, main_data, fte_expenditure_data) {
     .brushOn(false);
   year_chart.on('postRender.year', function(chart){
       chart.filter(2014);
+      quartile_scale.calcData();
       dc.redrawAll();
       chart.selectAll('rect.bar').on('click.singleFiler', function(d,i){
         year_chart.filterAll();
         year_chart.filter(d.data.key);
+        quartile_scale.calcData();
+        quartile_scale.calcData();
         dc.redrawAll();
       });
   });
   agencyColors = d3.scale.ordinal().range(["#ff00ff", "#b3ff00", "#ff6420", "#56adff", "#ff77d0", "#1cff2a", "#3cffff", "#ff77ff", "#ffff00", "#3366cc", "#dc3912", "#ff9900", "#109618", "#990099", "#0099c6", "#dd4477", "#66aa00", "#b82e2e", "#316395", "#994499", "#22aa99", "#156a60", "#600060", "#8a240b", "#8a2b4a", "#1f3e5d", "#00607c", "#9f6000", "#0a5e0f", "#602b60"]).domain(["Department of Building and Housing", "Ministry for Culture and Heritage", "Ministry for the Environment", "Ministry of Fisheries", "Ministry of Transport", "New Zealand Tourism Board", "State Services Commission", "Te Puni Kokiri", "The Treasury", "Department of Conservation", "Department of Internal Affairs", "Department of Labour", "Land Information New Zealand", "Ministry for Primary Industries", "Ministry of Economic Development", "Ministry of Foreign Affairs and Trade", "Ministry of Health", "New Zealand Customs Service", "New Zealand Trade and Enterprise", "New Zealand Transport Agency", "Statistics New Zealand", "Department of Corrections", "Inland Revenue", "Ministry of Business Innovation and Employment", "Ministry of Education", "Ministry of Justice", "Ministry of Social Development", "New Zealand Defence Force", "New Zealand Fire Service Commission", "New Zealand Police"]);
   agency_scale = d3.scale.ordinal().range([0,1,2]);
   agency_dimension = ndx.dimension(function(d) {return d.key.split(',')[0];});
+  agency_group = agency_dimension.group();
+  agency_group.oldAll = agency_group.all;
+  agency_group.all = function() {
+    return this.oldAll().filter(function(d) {return d.value>0;});
+  };
+  function sortBy(func) {
+    return function(a,b) {
+      return d3.ascending(func(a), func(b));
+    };
+  }
+  quartile_sorting_functions = d3.scale.ordinal().range([
+    function(d) {
+      return d3.entries(d.value[0].ict).reduce(function(prev,cur) {return prev+cur.value;},0);
+    },
+    function(d) {
+      return d.value[0].ict["Outsourced costs"];
+    }
+  ]).domain(['total_ict', 'outsourcing']);
+  quartile_scale = (function() {
+    var scale = function(agency) {
+      var idx = scale.data.indexOf(agency);
+      return idx===-1? -1:scale.quartile_scale(idx);
+    };
+    scale.quartile_scale = d3.scale.linear().range([0,0,1,1,2,2]).domain([0,100]);
+    scale.data = [];
+    scale.calcData = function() {
+      scale.data = super_scatter.data().sort(
+        sortBy(quartile_sorting_functions($('#agency input:radio:checked').val()))
+      ).map(dc.pluck('key'));
+      var lq = scale.data.length/4;
+      var uq = 3*scale.data.length/4;
+      // console.log(0,lq,lq,uq,scale.data.length);
+      scale.quartile_scale = scale.quartile_scale.domain([0,lq,lq,uq,uq,scale.data.length]);
+    };
+    return scale;
+  })();
+  $('#agency input:radio').on('change', function() {
+    quartile_scale.calcData();
+    agency_charts.apply(function(chart) {
+      chart.redraw();
+    });
+  });
   agency_charts = splitRowChart([
     '#smallAgencies',
     '#mediumAgencies',
     '#largeAgencies'
   ], function(d) {
-    return agency_scale(d.key);
+    if(d.value===1) {
+      return quartile_scale(d.key);
+    } else return agency_scale(d.key);
   }, '#agencyReset').options({
     dimension: agency_dimension,
-    group: agency_dimension.group(),
+    group: agency_group,
     colors: agencyColors,
     height: 250,
-    elasticX: true
-  }).apply(function(chart) {
+    elasticX: true,
+    title: function(d) {return d.key;},
+    ordering: function(d) {return quartile_scale.data.indexOf(d.key);}
+  }).apply(function(chart, idx) {
     chart.xAxis().ticks(0);
   });
 
@@ -136,11 +185,11 @@ function showCharts(error, main_data, fte_expenditure_data) {
 
       return chart;
     })("#super_scatterplot",
-      ["FTE","Total ICT Costs","Outsourced ICT","Total Agency Expenditure"],
+      ["Total ICT Costs","Outsourced ICT","FTE","Total Agency Expenditure"],
       [
-        function(d) {return d.value[0].fte;},
         function(d) {return d3.entries(d.value[0].ict).reduce(function(prev,cur) {return prev+cur.value;},0);},
         function(d) {return d.value[0].ict["Outsourced costs"];},
+        function(d) {return d.value[0].fte;},
         function(d) {return d.value[0].expenditure;},
       ],
       ['s','$s','$s','$s'],

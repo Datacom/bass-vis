@@ -1,0 +1,392 @@
+{
+  "Building & Housing (old)": {
+    "full_name": "Department of Building and Housing",
+    "cohort": null,
+    "FTEs": [
+      320,
+      354.83,
+      395.52
+    ]
+  },
+  "Culture and Heritage": {
+    "full_name": "Ministry for Culture and Heritage",
+    "cohort": null,
+    "FTEs": [
+      102.75,
+      110,
+      122.1,
+      118.3,
+      105.1,
+      100.6,
+      97.9,
+      108
+    ]
+  },
+  "Environment": {
+    "full_name": "Ministry for the Environment",
+    "cohort": null,
+    "FTEs": [
+      288.25,
+      296.82,
+      270.5,
+      277.7,
+      299.8,
+      302.41,
+      329,
+      329
+    ]
+  },
+  "Fisheries (old)": {
+    "full_name": "Ministry of Fisheries",
+    "cohort": null,
+    "FTEs": [
+      427.03,
+      428.3
+    ]
+  },
+  "NZ Tourism Board": {
+    "full_name": "New Zealand Tourism Board",
+    "cohort": null,
+    "FTEs": [
+      134.38,
+      129.45,
+      116,
+      116.57,
+      152.98,
+      164.28,
+      159.5,
+      162.12
+    ]
+  },
+  "SSC": {
+    "full_name": "State Services Commission",
+    "cohort": null,
+    "FTEs": [
+      161,
+      112.3,
+      107.1,
+      111.75,
+      110.34,
+      114,
+      112.03,
+      114.95
+    ]
+  },
+  "Te Puni Kokiri": {
+    "full_name": "Te Puni Kokiri",
+    "cohort": null,
+    "FTEs": [
+      303,
+      348.1,
+      343.3,
+      330,
+      298.9,
+      268.08,
+      278.96,
+      285.18
+    ]
+  },
+  "Treasury": {
+    "full_name": "The Treasury",
+    "cohort": null,
+    "FTEs": [
+      339,
+      366,
+      371,
+      388.5,
+      425.95,
+      454,
+      481,
+      486.16
+    ]
+  },
+  "Conservation": {
+    "full_name": "Department of Conservation",
+    "cohort": null,
+    "FTEs": [
+      1853,
+      1843,
+      1638.9,
+      1616.74,
+      1645.12,
+      1651,
+      1928.15,
+      1992.55
+    ]
+  },
+  "Internal Affairs": {
+    "full_name": "Department of Internal Affairs",
+    "cohort": null,
+    "FTEs": [
+      1493.25,
+      1743.75,
+      1927.85,
+      1993,
+      2046.1,
+      2051.8,
+      2042.5,
+      2078.4
+    ]
+  },
+  "Labour (old)": {
+    "full_name": "Department of Labour",
+    "cohort": null,
+    "FTEs": [
+      2166.2,
+      2138.2,
+      2146.97
+    ]
+  },
+  "LINZ": {
+    "full_name": "Land Information New Zealand",
+    "cohort": null,
+    "FTEs": [
+      503.88,
+      474.02,
+      428.5,
+      473.6,
+      469.18,
+      497.42,
+      550,
+      576.7
+    ]
+  },
+  "Primary Industries": {
+    "full_name": "Ministry for Primary Industries",
+    "cohort": null,
+    "FTEs": [
+      1764.55,
+      1733.93,
+      2096,
+      2108,
+      2183.86,
+      2284.96,
+      2412,
+      2455
+    ]
+  },
+  "Economic Development (old)": {
+    "full_name": "Ministry of Economic Development",
+    "cohort": null,
+    "FTEs": [
+      699.4,
+      672.9,
+      739.9
+    ]
+  },
+  "MFAT": {
+    "full_name": "Ministry of Foreign Affairs and Trade",
+    "cohort": null,
+    "FTEs": [
+      1521,
+      1489,
+      1432.4,
+      1307.2,
+      1340.9,
+      1369.98,
+      1448.16,
+      1428.4
+    ]
+  },
+  "Health": {
+    "full_name": "Ministry of Health",
+    "cohort": null,
+    "FTEs": [
+      1451,
+      1290,
+      1200,
+      1081.23,
+      1112.68,
+      1130.06,
+      1102.77,
+      1067.7
+    ]
+  },
+  "Customs": {
+    "full_name": "New Zealand Customs Service",
+    "cohort": null,
+    "FTEs": [
+      1152.95,
+      1141.42,
+      1170.8,
+      1144,
+      1097.07,
+      1082.31,
+      1079.24,
+      1120.85
+    ]
+  },
+  "NZ Transport Agency": {
+    "full_name": "New Zealand Transport Agency",
+    "cohort": null,
+    "FTEs": [
+      1356,
+      1325,
+      1347.6,
+      1380,
+      1344,
+      1321.48,
+      1393,
+      1350.8
+    ]
+  },
+  "NZ Trade and Enterprise": {
+    "full_name": "New Zealand Trade and Enterprise ",
+    "cohort": null,
+    "FTEs": [
+      544.51,
+      519,
+      496.61,
+      527.8,
+      546.8,
+      546.9,
+      563.8,
+      577
+    ]
+  },
+  "Statistics": {
+    "full_name": "Statistics New Zealand",
+    "cohort": null,
+    "FTEs": [
+      936,
+      883.82,
+      888.46,
+      1010.68,
+      950.26,
+      835,
+      825,
+      821
+    ]
+  },
+  "Corrections": {
+    "full_name": "Department of Corrections ",
+    "cohort": null,
+    "FTEs": [
+      7349.63,
+      7507,
+      7408.22,
+      7550.27,
+      7555.43,
+      7572.18,
+      7577.96,
+      8559.7
+    ]
+  },
+  "IRD  Department": {
+    "full_name": "Inland Revenue",
+    "cohort": null,
+    "FTEs": [
+      5663,
+      5663,
+      5526,
+      5364,
+      5626,
+      5679.37,
+      5721.36,
+      5567.07
+    ]
+  },
+  "Education": {
+    "full_name": "Ministry of Education ",
+    "cohort": null,
+    "FTEs": [
+      2455.86,
+      2474.21,
+      2324.36,
+      2569.81,
+      2663.8,
+      2517,
+      2569,
+      2623.76
+    ]
+  },
+  "Justice (Ministry)": {
+    "full_name": "Ministry of Justice",
+    "cohort": null,
+    "FTEs": [
+      3542,
+      3400.73,
+      3799,
+      3798,
+      3839,
+      3776,
+      3718,
+      3732
+    ]
+  },
+  "MSD": {
+    "full_name": "Ministry of Social Development",
+    "cohort": null,
+    "FTEs": [
+      9427,
+      9461,
+      9223,
+      9450,
+      10030,
+      10177,
+      10075.55,
+      10209
+    ]
+  },
+  "NZ Defence Force": {
+    "full_name": "New Zealand Defence Force",
+    "cohort": null,
+    "FTEs": [
+      12666,
+      11891,
+      10961,
+      11165,
+      11523,
+      11546,
+      11616,
+      11852.61
+    ]
+  },
+  "NZ Fire Service": {
+    "full_name": "New Zealand Fire Service Commission",
+    "cohort": null,
+    "FTEs": [
+      2241,
+      2264.7,
+      2249,
+      2261,
+      2291.75,
+      2327.94,
+      2331.6,
+      2405.58
+    ]
+  },
+  "NZ Police": {
+    "full_name": "New Zealand Police",
+    "cohort": null,
+    "FTEs": [
+      11875,
+      11922,
+      12025.93,
+      11710,
+      11700.09,
+      11846,
+      11836,
+      11963
+    ]
+  },
+  "Prime Minister and Cabinet": {
+    "full_name": "Department of the Prime Minister and Cabinet",
+    "cohort": null,
+    "FTEs": [
+      140.83,
+      155,
+      225.21,
+      216.66
+    ]
+  },
+  "MBIE": {
+    "full_name": "Ministry of Business Innovation and Employment",
+    "cohort": null,
+    "FTEs": [
+      3221,
+      3414.9,
+      3765.35
+    ]
+  }
+}

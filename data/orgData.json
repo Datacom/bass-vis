@@ -1,7 +1,7 @@
 {
   "Building & Housing (old)": {
     "full_name": "Department of Building and Housing",
-    "cohort": null,
+    "cohort": "Small",
     "FTEs": [
       320,
       354.83,
@@ -10,7 +10,7 @@
   },
   "Culture and Heritage": {
     "full_name": "Ministry for Culture and Heritage",
-    "cohort": null,
+    "cohort": "Small",
     "FTEs": [
       102.75,
       110,
@@ -24,7 +24,7 @@
   },
   "Environment": {
     "full_name": "Ministry for the Environment",
-    "cohort": null,
+    "cohort": "Small",
     "FTEs": [
       288.25,
       296.82,
@@ -38,7 +38,7 @@
   },
   "Fisheries (old)": {
     "full_name": "Ministry of Fisheries",
-    "cohort": null,
+    "cohort": "Small",
     "FTEs": [
       427.03,
       428.3
@@ -46,7 +46,7 @@
   },
   "NZ Tourism Board": {
     "full_name": "New Zealand Tourism Board",
-    "cohort": null,
+    "cohort": "Small",
     "FTEs": [
       134.38,
       129.45,
@@ -60,7 +60,7 @@
   },
   "SSC": {
     "full_name": "State Services Commission",
-    "cohort": null,
+    "cohort": "Small",
     "FTEs": [
       161,
       112.3,
@@ -74,7 +74,7 @@
   },
   "Te Puni Kokiri": {
     "full_name": "Te Puni Kokiri",
-    "cohort": null,
+    "cohort": "Small",
     "FTEs": [
       303,
       348.1,
@@ -88,7 +88,7 @@
   },
   "Treasury": {
     "full_name": "The Treasury",
-    "cohort": null,
+    "cohort": "Small",
     "FTEs": [
       339,
       366,
@@ -102,7 +102,7 @@
   },
   "Conservation": {
     "full_name": "Department of Conservation",
-    "cohort": null,
+    "cohort": "Medium",
     "FTEs": [
       1853,
       1843,
@@ -116,7 +116,7 @@
   },
   "Internal Affairs": {
     "full_name": "Department of Internal Affairs",
-    "cohort": null,
+    "cohort": "Medium",
     "FTEs": [
       1493.25,
       1743.75,
@@ -130,7 +130,7 @@
   },
   "Labour (old)": {
     "full_name": "Department of Labour",
-    "cohort": null,
+    "cohort": "Medium",
     "FTEs": [
       2166.2,
       2138.2,
@@ -139,7 +139,7 @@
   },
   "LINZ": {
     "full_name": "Land Information New Zealand",
-    "cohort": null,
+    "cohort": "Medium",
     "FTEs": [
       503.88,
       474.02,
@@ -153,7 +153,7 @@
   },
   "Primary Industries": {
     "full_name": "Ministry for Primary Industries",
-    "cohort": null,
+    "cohort": "Medium",
     "FTEs": [
       1764.55,
       1733.93,
@@ -167,7 +167,7 @@
   },
   "Economic Development (old)": {
     "full_name": "Ministry of Economic Development",
-    "cohort": null,
+    "cohort": "Medium",
     "FTEs": [
       699.4,
       672.9,
@@ -176,7 +176,7 @@
   },
   "MFAT": {
     "full_name": "Ministry of Foreign Affairs and Trade",
-    "cohort": null,
+    "cohort": "Medium",
     "FTEs": [
       1521,
       1489,
@@ -190,7 +190,7 @@
   },
   "Health": {
     "full_name": "Ministry of Health",
-    "cohort": null,
+    "cohort": "Medium",
     "FTEs": [
       1451,
       1290,
@@ -204,7 +204,7 @@
   },
   "Customs": {
     "full_name": "New Zealand Customs Service",
-    "cohort": null,
+    "cohort": "Medium",
     "FTEs": [
       1152.95,
       1141.42,
@@ -218,7 +218,7 @@
   },
   "NZ Transport Agency": {
     "full_name": "New Zealand Transport Agency",
-    "cohort": null,
+    "cohort": "Medium",
     "FTEs": [
       1356,
       1325,
@@ -231,8 +231,8 @@
     ]
   },
   "NZ Trade and Enterprise": {
-    "full_name": "New Zealand Trade and Enterprise ",
-    "cohort": null,
+    "full_name": "New Zealand Trade and Enterprise",
+    "cohort": "Medium",
     "FTEs": [
       544.51,
       519,
@@ -246,7 +246,7 @@
   },
   "Statistics": {
     "full_name": "Statistics New Zealand",
-    "cohort": null,
+    "cohort": "Medium",
     "FTEs": [
       936,
       883.82,
@@ -259,8 +259,8 @@
     ]
   },
   "Corrections": {
-    "full_name": "Department of Corrections ",
-    "cohort": null,
+    "full_name": "Department of Corrections",
+    "cohort": "Large",
     "FTEs": [
       7349.63,
       7507,
@@ -274,7 +274,7 @@
   },
   "IRD  Department": {
     "full_name": "Inland Revenue",
-    "cohort": null,
+    "cohort": "Large",
     "FTEs": [
       5663,
       5663,
@@ -287,8 +287,8 @@
     ]
   },
   "Education": {
-    "full_name": "Ministry of Education ",
-    "cohort": null,
+    "full_name": "Ministry of Education",
+    "cohort": "Large",
     "FTEs": [
       2455.86,
       2474.21,
@@ -302,7 +302,7 @@
   },
   "Justice (Ministry)": {
     "full_name": "Ministry of Justice",
-    "cohort": null,
+    "cohort": "Large",
     "FTEs": [
       3542,
       3400.73,
@@ -316,7 +316,7 @@
   },
   "MSD": {
     "full_name": "Ministry of Social Development",
-    "cohort": null,
+    "cohort": "Large",
     "FTEs": [
       9427,
       9461,
@@ -330,7 +330,7 @@
   },
   "NZ Defence Force": {
     "full_name": "New Zealand Defence Force",
-    "cohort": null,
+    "cohort": "Large",
     "FTEs": [
       12666,
       11891,
@@ -344,7 +344,7 @@
   },
   "NZ Fire Service": {
     "full_name": "New Zealand Fire Service Commission",
-    "cohort": null,
+    "cohort": "Large",
     "FTEs": [
       2241,
       2264.7,
@@ -358,7 +358,7 @@
   },
   "NZ Police": {
     "full_name": "New Zealand Police",
-    "cohort": null,
+    "cohort": "Large",
     "FTEs": [
       11875,
       11922,
@@ -372,7 +372,7 @@
   },
   "Prime Minister and Cabinet": {
     "full_name": "Department of the Prime Minister and Cabinet",
-    "cohort": null,
+    "cohort": "Small",
     "FTEs": [
       140.83,
       155,
@@ -382,7 +382,7 @@
   },
   "MBIE": {
     "full_name": "Ministry of Business Innovation and Employment",
-    "cohort": null,
+    "cohort": "Large",
     "FTEs": [
       3221,
       3414.9,

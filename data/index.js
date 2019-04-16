@@ -16,6 +16,12 @@ const chunks = {
   CES: [2, 3, 4, 5, 6, 7, 8],
 }
 
+const cohortMap = {
+  PG1: 'Small',
+  PG2: 'Medium',
+  PG3: 'Large',
+}
+
 years.forEach(year => {
   const worksheet = excel.Sheets[year];
 
@@ -26,14 +32,16 @@ years.forEach(year => {
   const gen1 = xlsx.utils.decode_cell(cellsInFirstCol.find(cell => worksheet[cell].v === 'GEN 1'));
 
   cellsInFirstRow.map(xlsx.utils.decode_cell).forEach(({ c }) => {
-    const shortOrgName = worksheet[xlsx.utils.encode_cell({ c, r: orgStructureType ? 3 : 4 })].v.trim();
-    const fullOrgName = worksheet[xlsx.utils.encode_cell({ c, r: orgStructureType ? 4 : 5 })].v;
+    const shortOrgName = worksheet[xlsx.utils.encode_cell({ c, r: orgStructureType ? 2 : 3 })].v.trim();
+    const fullOrgName = worksheet[xlsx.utils.encode_cell({ c, r: orgStructureType ? 4 : 5 })].v.trim();
 
     if(!orgData[shortOrgName]) {
-      orgData[shortOrgName] = { full_name: fullOrgName, cohort: null, FTEs: [] };
+      const cohortVal = (worksheet[xlsx.utils.encode_cell({ c, r: orgStructureType ? 0 : 1 })] || {}).v;
+      const cohort = cohortMap[cohortVal] || null;
+      orgData[shortOrgName] = { full_name: fullOrgName, cohort, FTEs: {} };
     }
     const fteValue = worksheet[xlsx.utils.encode_cell({ c, r: gen1.r + 2 })].v;
-    orgData[shortOrgName].FTEs.push(fteValue);
+    orgData[shortOrgName].FTEs[year] = fteValue;
 
     Object.entries(chunks).forEach(([type, rows]) => {
       const typeRow = xlsx.utils.decode_cell(cellsInFirstCol.find(cell => worksheet[cell].v === `${type} 1`));

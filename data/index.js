@@ -38,10 +38,12 @@ years.forEach(year => {
     if(!orgData[shortOrgName]) {
       const cohortVal = (worksheet[xlsx.utils.encode_cell({ c, r: orgStructureType ? 0 : 1 })] || {}).v;
       const cohort = cohortMap[cohortVal] || null;
-      orgData[shortOrgName] = { full_name: fullOrgName, cohort, FTEs: {} };
+      orgData[shortOrgName] = { full_name: fullOrgName, cohort, FTEs: {}, expenditure: {} };
     }
     const fteValue = worksheet[xlsx.utils.encode_cell({ c, r: gen1.r + 2 })].v;
     orgData[shortOrgName].FTEs[year] = fteValue;
+    const expenditureVal = worksheet[xlsx.utils.encode_cell({ c, r: gen1.r + 4 })].v;
+    orgData[shortOrgName].expenditure[year] = expenditureVal;
 
     Object.entries(chunks).forEach(([type, rows]) => {
       const typeRow = xlsx.utils.decode_cell(cellsInFirstCol.find(cell => worksheet[cell].v === `${type} 1`));

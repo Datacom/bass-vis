@@ -1,0 +1,37 @@
+/* import only the necessary Bootstrap files */
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+/* -------begin customization-------- */
+// $theme-colors: (
+//   primary: green,
+// );
+$body-bg: $gray-200;
+
+body#dark {
+  background: $gray-700;
+}
+.navbar-dark .nav-item, #dark {
+  color: white;
+}
+
+.borderedCard {
+  border: 1px dashed lightgrey;
+  background: white;
+  height: 100%;
+  padding: 0 15px;
+}
+
+#dark .borderedCard {
+  border-color: #101010;
+  background: rgba(0, 0, 0, 0.125);
+}
+
+.container-fluid > .row {
+  margin-top: 15px;
+}
+/* -------end customization-------- */
+
+/* finally, import Bootstrap to set the changes! */
+@import "~bootstrap/scss/bootstrap";
+@import "~dc/style/dc.scss"

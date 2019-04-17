@@ -1,7 +1,9 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
+import Crossfilter from '../../components/Crossfilter';
+import { YearChart, CohortChart } from './charts';
 
-const Visualisation = () => (<>
+const Visualisation = () => (<Crossfilter data={() => import('../../data/data.json')}>
   <Row>
     <Col>
       <div className='borderedCard'>
@@ -15,9 +17,11 @@ const Visualisation = () => (<>
         <Row>
           <Col>
             <legend>Year</legend>
+            <YearChart />
           </Col>
           <Col>
             <legend>Cohort</legend>
+            <CohortChart />
           </Col>
         </Row>
         <Row>
@@ -40,6 +44,6 @@ const Visualisation = () => (<>
       </div>
     </Col>
   </Row>
-</>);
+</Crossfilter>);
 
 export default Visualisation;

@@ -14,6 +14,9 @@ body#dark {
 .navbar-dark .nav-item, #dark {
   color: white;
 }
+#dark .dc-legend-item text {
+  fill: white;
+}
 
 .borderedCard {
   border: 1px dashed lightgrey;
@@ -30,8 +33,17 @@ body#dark {
 .container-fluid > .row {
   margin-top: 15px;
 }
+
+.borderedCard > .col > .row > .dc-chart > legend {
+  font-size: 100%;
+}
+
 /* -------end customization-------- */
 
 /* finally, import Bootstrap to set the changes! */
 @import "~bootstrap/scss/bootstrap";
-@import "~dc/style/dc.scss"
+@import "~dc/style/dc.scss";
+
+div.dc-chart.col {
+  float: none;
+}

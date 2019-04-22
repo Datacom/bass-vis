@@ -1,9 +1,10 @@
 import React, { Component, createRef } from 'react';
 import dc from 'dc';
 import { format } from 'd3';
+import { Col } from 'reactstrap';
 import { useCrossfilter } from './Crossfilter';
 
-class Chart extends Component {
+export class Chart extends Component {
   constructor(props) {
     super(props);
 
@@ -11,11 +12,11 @@ class Chart extends Component {
   }
 
   componentDidMount() {
-    const { dimFunc, reduceSum, reduceFns, ndx, i, type, ...options } = this.props;
+    const { dimension, group, dimFunc, reduceSum, reduceFns, ndx, i, type, on, ...options } = this.props;
     this.chart = dc[`${type}Chart`](this.ele.current);
 
-    this.dimension = ndx.dimension(dimFunc);
-    this.group = this.dimension.group();
+    this.dimension = dimension || ndx.dimension(dimFunc);
+    this.group = group || this.dimension.group();
 
     if(reduceSum) {
       this.group = this.group.reduceSum(reduceSum);
@@ -29,8 +30,11 @@ class Chart extends Component {
       group: this.group,
       elasticX: true,
       elasticY: true,
+      width: (ele) => ele.offsetWidth - 35,
       ...options,
     })
+
+    Object.entries(on || {}).forEach(([key, func]) => this.chart.on(key, func));
 
     if(this.props.type === 'row') {
       this.chart.margins({ ...this.chart.margins(), left: 10, right: 10, top: 0 })
@@ -52,16 +56,18 @@ class Chart extends Component {
   }
 
   render() {
-    return <div ref={this.ele} />;
+    return <div ref={this.ele} className={this.props.className}>
+      <legend>{this.props.chartTitle || 'Title'}</legend>
+    </div>;
   }
 }
 
-const ConnectedChart = (props) => {
+const CrossfilterChart = (props) => {
   const context = useCrossfilter();
   return <Chart {...context} {...props} />
 }
 
-export default new Proxy(ConnectedChart, {
+export default new Proxy(CrossfilterChart, {
   get: function(Component, type) {
     return (props) => <Component {...{ type }} {...props} />
   }

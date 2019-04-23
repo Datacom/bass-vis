@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, isValidElement, cloneElement } from 'react';
 import { Row } from 'reactstrap';
 import { Chart } from './Chart';
 import { useCrossfilter } from './Crossfilter';
@@ -9,6 +9,7 @@ class SplitChart extends Component {
     super(props);
 
     const { dimFunc, reduceSum, reduceFns, ndx } = this.props;
+    this.state = { i: 0 };
 
     this.dimension = ndx.dimension(dimFunc);
     window.dimension = this.dimension;
@@ -53,7 +54,12 @@ class SplitChart extends Component {
   render() {
     const { chartTitle, className, dimFunc, reduceSum, reduceFns, ndx, groups, splitFn, classNames, height, heights, chartTitles, ...props } = this.props;
     return <div className={className}>
-      <legend>{chartTitle}</legend>
+      <legend>
+        {isValidElement(chartTitle) ?
+          cloneElement(chartTitle, { ...chartTitle.props, dimension: this.dimension, group: this.group, i: this.props.i }) :
+          chartTitle
+        }
+      </legend>
       <Row>
         {groups.map((key, i) => (
           <Chart

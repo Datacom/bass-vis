@@ -5,7 +5,7 @@ import * as Charts from '../charts';
 import AgencyCharts from './AgencyCharts';
 import SubcostCharts from './SubcostCharts';
 
-const Visualisation = () => (<Crossfilter data={() => import('../../data/data.json').then(d => d.default)}>
+const Visualisation = () => (<Crossfilter data={() => import(/* webpackChunkName: "ASVisData" */ '../../data/data.json').then(d => d.default)}>
   <Row>
     <Col>
       <div className='borderedCard'>

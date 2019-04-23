@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Nav, NavItem, NavLink, NavbarBrand, CustomInput, Container } from 'reactstrap';
-import { Switch, Route, Redirect, NavLink as RRNavLink } from "react-router-dom";
-import ASVis from './pages/ASVis';
-import FteVis from './pages/FteVis';
+import { HashRouter as Router, Switch, Route, Redirect, NavLink as RRNavLink } from "react-router-dom";
+import Loadable from 'react-loadable';
+
+const loading = () => 'Loading...';
 
 const AppBar = () => {
   const [ darkTheme, setDarkTheme ] = useState(true);
@@ -28,17 +29,19 @@ const AppBar = () => {
 
 const App = () => {
   return (
-    <>
-      <AppBar />
-      <Container fluid>
-        <Switch>
-          <Redirect exact from='/' to='/as_functions'/>
-          <Route path="/as_functions" component={ASVis} />
-          <Route path="/fte_expenditure" component={FteVis} />
-          <Route component={() => '404: Page not found'} />
-        </Switch>
-      </Container>
-    </>
+    <Router>
+      <>
+        <AppBar />
+        <Container fluid>
+          <Switch>
+            <Redirect exact from='/' to='/as_functions'/>
+            <Route path="/as_functions" component={Loadable({ loader: () => import(/* webpackChunkName: "ASVis" */ './pages/ASVis'), loading })} />
+            <Route path="/fte_expenditure" component={Loadable({ loader: () => import(/* webpackChunkName: "FteVis" */ './pages/FteVis'), loading })} />
+            <Route component={() => '404: Page not found'} />
+          </Switch>
+        </Container>
+      </>
+    </Router>
   );
 };
 

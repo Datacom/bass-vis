@@ -65,6 +65,7 @@ class SplitChart extends Component {
         {groups.map((key, i) => (
           <Chart
             key={key}
+            reset={false}
             chartTitle={chartTitles[i] || key}
             dimension={this.dimension}
             group={this.group}

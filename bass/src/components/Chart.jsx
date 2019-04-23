@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import dc from 'dc';
 import { format } from 'd3';
-import { Col } from 'reactstrap';
+import { Button } from 'reactstrap';
 import { useCrossfilter } from './Crossfilter';
 
 export class Chart extends Component {
@@ -9,6 +9,7 @@ export class Chart extends Component {
     super(props);
 
     this.ele = createRef();
+    this.reset = this.reset.bind(this);
   }
 
   componentDidMount() {
@@ -45,6 +46,10 @@ export class Chart extends Component {
     // TODO: load data async, maybe data/crossfilter loader utilising suspense.
   }
 
+  reset() {
+    this.chart.filterAll().redrawGroup();
+  }
+
   componentDidUpdate() {
     // update options
     // TODO: change chart type
@@ -57,7 +62,7 @@ export class Chart extends Component {
 
   render() {
     return <div ref={this.ele} className={this.props.className}>
-      <legend>{this.props.chartTitle || 'Title'}</legend>
+      <legend>{this.props.chartTitle || 'Title'} {this.props.reset !== false && <Button size='sm' onClick={this.reset} className='reset' style={{display: 'none'}}>Reset</Button>}</legend>
     </div>;
   }
 }

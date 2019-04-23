@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { ButtonGroup, Button } from 'reactstrap';
 import { format, interpolateSpectral, scaleOrdinal, color } from 'd3';
 import orgData from '../../data/orgData.json';
-import { metricColors, subcostColors } from './charts';
+import { metricColors, subcostColors } from './SubcostCharts';
 
 const percentFormat = format('%');
 

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { ButtonGroup, Button } from 'reactstrap';
 import { format } from 'd3';
-import { subcostColors } from './charts';
+import { subcostColors } from './SubcostCharts';
 import { orgColor } from './AgencyTitle';
 
 const percentFormat = format('%');

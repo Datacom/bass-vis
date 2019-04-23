@@ -42,6 +42,7 @@ export class Chart extends Component {
       this.chart.xAxis().ticks(4).tickFormat(d => format('$.2s')(d).replace(/G/, 'B'));
     }
     this.chart.render();
+    this.chart.turnOffControls();
     // TODO: add props/options
     // TODO: load data async, maybe data/crossfilter loader utilising suspense.
   }
@@ -57,12 +58,13 @@ export class Chart extends Component {
   }
 
   componentWillUnmount() {
-    // dc.chartRegistry.deregister(this.chart);
+    dc.chartRegistry.deregister(this.chart);
+    // TODO: derigster dim maybe
   }
 
   render() {
     return <div ref={this.ele} className={this.props.className}>
-      <legend>{this.props.chartTitle || 'Title'} {this.props.reset !== false && <Button size='sm' onClick={this.reset} className='reset' style={{display: 'none'}}>Reset</Button>}</legend>
+      <legend>{this.props.chartTitle || 'Title'} {this.props.reset !== false && <Button size='sm' onClick={this.reset} className='reset'>Reset</Button>}</legend>
     </div>;
   }
 }

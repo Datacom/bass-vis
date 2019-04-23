@@ -1,13 +1,15 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
 import Crossfilter from '../../components/Crossfilter';
-import * as Charts from './charts';
+import * as Charts from '../charts';
+import AgencyCharts from './AgencyCharts';
+import SubcostCharts from './SubcostCharts';
 
 const Visualisation = () => (<Crossfilter data={() => import('../../data/data.json').then(d => d.default)}>
   <Row>
     <Col>
       <div className='borderedCard'>
-        <Charts.Agencies />
+        <AgencyCharts />
       </div>
     </Col>
   </Row>
@@ -25,7 +27,7 @@ const Visualisation = () => (<Crossfilter data={() => import('../../data/data.js
     </Col>
     <Col xs={12} sm={8}>
       <div className='borderedCard'>
-        <Charts.Subcosts />
+        <SubcostCharts />
       </div>
     </Col>
   </Row>

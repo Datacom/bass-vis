@@ -3,7 +3,7 @@ import { Row, Col } from 'reactstrap';
 import { scaleLinear, format } from 'd3';
 import Crossfilter from '../../components/Crossfilter';
 import data from './data';
-import { Year, Cohort } from '../ASVis/charts';
+import * as Charts from '../charts';
 import SplitChart from '../../components/SplitChart';
 import orgData from '../../data/orgData.json';
 import { orgColor } from '../ASVis/AgencyTitle';
@@ -13,10 +13,10 @@ const Visualisation = () => (<Crossfilter data={() => Promise.resolve(data())}>
     <Col xs={12} sm={2}>
       <div className='borderedCard'>
         <Row>
-          <Year className='col' />
+          <Charts.Year className='col' />
         </Row>
         <Row>
-          <Cohort className='col' />
+          <Charts.Cohort className='col' />
         </Row>
       </div>
     </Col>

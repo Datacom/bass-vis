@@ -5,6 +5,7 @@ import Chart from '../../components/Chart';
 import SplitChart from '../../components/SplitChart';
 import orgData from '../../data/orgData.json';
 import AgencyTitle from './AgencyTitle';
+import SubcostTitle from './SubcostTitle';
 
 export const metricColors = { HR: "#2ca02c", FIN: "#ff7f0e", PR: "#9467bd", ICT: "#d62728", CES: "#1f77b4" };
 
@@ -61,7 +62,7 @@ export const Metric = (props) => (
 
 export const Subcosts = () => (
   <SplitChart
-    chartTitle='Subcosts'
+    chartTitle={<SubcostTitle />}
     type='row'
     dimFunc={d => [d.type, d.metric]}
     reduceSum={d => d.value}
@@ -72,5 +73,6 @@ export const Subcosts = () => (
     classNames={['col-4', 'col-4', 'col-4', 'col-6', 'col-6']}
     heights={[ 170, 170, 170, 210, 210 ]}
     chartTitles={[ 'HR', 'Finance', 'Procurement', 'ICT', 'CES' ].map(prefix => `${prefix} Subcosts`)}
+    colorCalculator={(d) => `url(#${d.key[0]}_${d.key[1].replace(/[ (),]/g, '_')})`}
   />
 );

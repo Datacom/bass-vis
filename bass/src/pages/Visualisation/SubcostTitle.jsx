@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { ButtonGroup, Button } from 'reactstrap';
-import { format, interpolateSpectral, scaleOrdinal, color } from 'd3';
+import { format } from 'd3';
 import orgData from '../../data/orgData.json';
-import { metricColors, subcostColors } from './charts';
+import { subcostColors } from './charts';
+import { orgColor } from './AgencyTitle';
 
 const percentFormat = format('%');
 
 const nestedReduce = (fields, subtract = false) => (p, v) => {
   fields.reduce((obj, field, i) => {
-    const key = v[field];
+    const key = field(v);
     if(!obj[key]) obj[key] = (fields.length - 1 === i) ? 0 : {};
 
     if(fields.length - 1 === i) {
@@ -19,22 +20,9 @@ const nestedReduce = (fields, subtract = false) => (p, v) => {
   return p;
 };
 
-const mediumColors = Array.apply(null, {length: 12}).map(Number.call, Number).map(d => d/11).map(interpolateSpectral);
-const nineColors = Array.apply(null, {length: 9}).map(Number.call, Number).map(d => d/8).map(interpolateSpectral);
-const smallColors = nineColors.map(color).map(c => c.brighter(0.75).toString()).reverse();
-const largeColors = nineColors.map(color).map(c => c.darker(2).toString()).reverse();
+const accessors = [d => `${d.type},${d.metric}`, d => d.org];
 
-const orgByCohortColors = {
-  Small: scaleOrdinal(smallColors),
-  Medium: scaleOrdinal(mediumColors),
-  Large: scaleOrdinal(largeColors),
-}
-
-export const orgColor = (org) => orgByCohortColors[orgData[org].cohort](org);
-
-const accessors = ['org', 'type', 'metric'];
-
-export default class AgencyTitle extends Component {
+export default class SubcostTitle extends Component {
   constructor(props) {
     super(props);
 
@@ -45,60 +33,54 @@ export default class AgencyTitle extends Component {
       () => ({}),
     );
     this.generateStops = this.generateStops.bind(this);
+    window.groupAll = this.groupAll;
   }
 
   generateStops() {
     const output = {};
-
     const data = this.groupAll.value();
-    Object.entries(data).forEach(([org, obj]) => {
+
+    Object.entries(data).forEach(([metric_subcost, obj]) => {
       const stops = [];
       if(this.state.selected === 0) {
-        const color = orgColor(org);
+        const [metric, subcost] = metric_subcost.split(',');
+        const color = subcostColors[metric](subcost);
         stops.push({ color, start: 0, stop: 1 });
       } else {
         let total = 0;
         const vals = [];
-        Object.entries(obj).forEach(([ metric, obj ]) => {
-          if(this.state.selected === 1) {
-            const val = Object.values(obj).reduce((prev, cur) => prev + cur, 0);
-            vals.push({ metric, val });
-            total += val;
-          } else {
-            Object.entries(obj).forEach(([ subcost, val ]) => {
-              vals.push({ metric, subcost, val });
-              total += val;
-            });
-          }
+        Object.entries(obj).forEach(([ org, val ]) => {
+          vals.push({ org, val });
+          total += val;
         });
 
         let start = 0;
-        vals.forEach(({ metric, subcost, val }) => {
+        vals.forEach(({ org, val }) => {
           const stop = start + val / total;
-          const color = (!subcost) ? metricColors[metric] : subcostColors[metric](subcost);
+          const color = orgColor(org);
           stops.push({ color, start, stop });
           start = stop;
         });
       }
-      output[org] = stops;
+      output[metric_subcost.split(',').join('_').replace(/[ (),]/g, '_')] = stops;
     })
 
     return output;
   }
 
   render() {
-    const orgStops = this.generateStops();
+    const stopData = this.generateStops();
     return <>
-      Agencies (Total cost of A&S functions)
+      Subcosts
       <ButtonGroup size='sm'>
-        {['Agency', 'Metric', 'Subcosts'].map((text, idx) => (
+        {['Subcost', 'Agencies'].map((text, idx) => (
           <Button key={text} active={this.state.selected === idx} onClick={() => this.setState({ selected: idx })}>{text}</Button>
         ))}
       </ButtonGroup>
       <svg height={0} width={0}>
         <defs>
-          {Object.entries(orgStops).map(([ org, stops ]) => (
-            <linearGradient id={org.replace(/ /g, '_')} key={org}>
+          {Object.entries(stopData).map(([ key, stops ]) => (
+            <linearGradient id={key} key={key}>
               {stops.map(({ color, start, stop }) => (
                 <>
                   <stop offset={percentFormat(start)} stopColor={color} stopOpacity={1} />

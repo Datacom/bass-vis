@@ -1,8 +1,8 @@
 import React, { Component, createRef } from 'react';
 import dc from 'dc';
-import { format } from 'd3';
 import { Button } from 'reactstrap';
 import { useCrossfilter } from './Crossfilter';
+import { roundedMoneyFormat } from '../pages/shared';
 
 export class Chart extends Component {
   constructor(props) {
@@ -39,7 +39,7 @@ export class Chart extends Component {
 
     if(this.props.type === 'row') {
       this.chart.margins({ ...this.chart.margins(), left: 10, right: 10, top: 0 })
-      this.chart.xAxis().ticks(4).tickFormat(d => format('$.2s')(d).replace(/G/, 'B'));
+      this.chart.xAxis().ticks(4).tickFormat(roundedMoneyFormat);
     }
     this.chart.render();
     this.chart.turnOffControls();

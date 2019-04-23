@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { ButtonGroup, Button } from 'reactstrap';
 import { format, interpolateSpectral, scaleOrdinal, color } from 'd3';
 import orgData from '../../data/orgData.json';
@@ -99,11 +99,11 @@ export default class AgencyTitle extends Component {
         <defs>
           {Object.entries(orgStops).map(([ org, stops ]) => (
             <linearGradient id={org.replace(/ /g, '_')} key={org}>
-              {stops.map(({ color, start, stop }) => (
-                <>
+              {stops.map(({ color, start, stop }, idx) => (
+                <Fragment key={idx}>
                   <stop offset={percentFormat(start)} stopColor={color} stopOpacity={1} />
                   <stop offset={percentFormat(stop)} stopColor={color} stopOpacity={1} />
-                </>
+                </Fragment>
               ))}
             </linearGradient>
           ))}

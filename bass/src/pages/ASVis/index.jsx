@@ -29,13 +29,6 @@ const Visualisation = () => (<Crossfilter data={() => import('../../data/data.js
       </div>
     </Col>
   </Row>
-  <Row>
-    <Col>
-      <div className='borderedCard'>
-        <legend>FTE vs Expenditure (by cohort size)</legend>
-      </div>
-    </Col>
-  </Row>
 </Crossfilter>);
 
 export default Visualisation;

@@ -2,7 +2,7 @@ import React from 'react';
 import { scaleOrdinal } from 'd3';
 import SplitChart from '../../components/SplitChart';
 import SubcostTitle from './SubcostTitle';
-import { disableElasticOnPreRedraw, reduceSum, title } from '../shared';
+import { disableElasticOnPreRedraw, reduceSum, moneyFormat } from '../shared';
 
 export const metricColors = { HR: "#2ca02c", FIN: "#ff7f0e", PR: "#9467bd", ICT: "#d62728", CES: "#1f77b4" };
 
@@ -27,7 +27,7 @@ const Subcosts = () => (
       type: 'row',
       chartTitles: [ 'HR', 'Finance', 'Procurement', 'ICT', 'CES' ].map(prefix => `${prefix} Subcosts`),
       label: d => d.key[1],
-      title,
+      title: d => `[${d.key[0]}] ${d.key[1]}: ${moneyFormat(d.value)}`,
       heights: [ 170, 170, 170, 210, 210 ],
       colorCalculator: (d) => `url(#${d.key[0]}_${d.key[1].replace(/[ (),]/g, '_')})`,
       on: {

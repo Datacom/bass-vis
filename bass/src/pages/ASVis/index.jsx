@@ -3,7 +3,7 @@ import { Row, Col } from 'reactstrap';
 import Crossfilter from '../../components/Crossfilter';
 import * as Charts from './charts';
 
-const Visualisation = () => (<Crossfilter data={() => import('../../data/data.json')}>
+const Visualisation = () => (<Crossfilter data={() => import('../../data/data.json').then(d => d.default)}>
   <Row>
     <Col>
       <div className='borderedCard'>

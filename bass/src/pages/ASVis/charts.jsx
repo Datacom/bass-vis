@@ -27,7 +27,7 @@ export const Agencies = () => (
     splitFn={d => orgData[d.key].cohort}
     groups={['Small', 'Medium', 'Large']}
     className='col'
-    height={290}
+    height={270}
     colorCalculator={(d) => `url(#${d.key.replace(/ /g, '_')})`}
     on={{
       'preRedraw.disableElastic': chart => {

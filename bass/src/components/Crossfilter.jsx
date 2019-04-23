@@ -21,7 +21,7 @@ export default class Crossfilter extends Component {
   componentDidMount() {
     this.props.data().then(data => {
       // Have to do data.default, as webpack's native json loading will import an object instead of array here.
-      this.state.ndx.add(data.default);
+      this.state.ndx.add(data);
       dc.renderlet(() => this.setState({ i: this.state.i + 1}));
       // dc.disableTransitions = true;
       dc.redrawAll()

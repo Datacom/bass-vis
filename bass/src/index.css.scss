@@ -34,7 +34,8 @@ body#dark {
   margin-top: 15px;
 }
 
-.borderedCard > .col > .row > .dc-chart > legend {
+.borderedCard > .col > .row > .dc-chart > legend,
+.borderedCard > .col-12 > .row > .dc-chart > legend {
   font-size: 100%;
 }
 

@@ -12,7 +12,6 @@ class SplitChart extends Component {
     this.state = { i: 0 };
 
     this.dimension = ndx.dimension(dimFunc);
-    window.dimension = this.dimension;
     this.group = this.dimension.group();
     this.charts = [];
 

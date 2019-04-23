@@ -33,7 +33,6 @@ export default class SubcostTitle extends Component {
       () => ({}),
     );
     this.generateStops = this.generateStops.bind(this);
-    window.groupAll = this.groupAll;
   }
 
   generateStops() {

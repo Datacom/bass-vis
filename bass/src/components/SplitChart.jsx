@@ -49,10 +49,11 @@ class SplitChart extends Component {
     classNames: [],
     heights: [],
     chartTitles: [],
+    on: {},
   };
 
   render() {
-    const { chartTitle, className, dimFunc, reduceSum, reduceFns, ndx, groups, splitFn, classNames, height, heights, chartTitles, ...props } = this.props;
+    const { chartTitle, on, className, dimFunc, reduceSum, reduceFns, ndx, groups, splitFn, classNames, height, heights, chartTitles, ...props } = this.props;
     return <div className={className}>
       <legend>
         {isValidElement(chartTitle) ?
@@ -74,6 +75,7 @@ class SplitChart extends Component {
             }}
             on={{
               'filtered.test': (chart) => this.filterOtherCharts(chart, i),
+              ...on,
             }}
             data={group => {
               return group.all().filter(d => splitFn(d) === key);

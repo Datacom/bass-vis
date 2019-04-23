@@ -29,6 +29,13 @@ export const Agencies = () => (
     className='col'
     height={290}
     colorCalculator={(d) => `url(#${d.key.replace(/ /g, '_')})`}
+    on={{
+      'preRedraw.disableElastic': chart => {
+        const total = chart.data().map(d => d.value).reduce((prev, cur) => prev + cur, 0);
+        // Disable elastic x if chart is empty, to prevent centering of graph
+        chart.elasticX(total !== 0);
+      }
+    }}
   />
 );
 
@@ -74,5 +81,12 @@ export const Subcosts = () => (
     heights={[ 170, 170, 170, 210, 210 ]}
     chartTitles={[ 'HR', 'Finance', 'Procurement', 'ICT', 'CES' ].map(prefix => `${prefix} Subcosts`)}
     colorCalculator={(d) => `url(#${d.key[0]}_${d.key[1].replace(/[ (),]/g, '_')})`}
+    on={{
+      'preRedraw.disableElastic': chart => {
+        const total = chart.data().map(d => d.value).reduce((prev, cur) => prev + cur, 0);
+        // Disable elastic x if chart is empty, to prevent centering of graph
+        chart.elasticX(total !== 0);
+      }
+    }}
   />
 );

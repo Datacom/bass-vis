@@ -1,0 +1,54 @@
+/* import only the necessary Bootstrap files */
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+/* -------begin customization-------- */
+// $theme-colors: (
+//   primary: green,
+// );
+$body-bg: $gray-200;
+
+body#dark {
+  background: $gray-700;
+}
+.navbar-dark .nav-item, #dark {
+  color: white;
+}
+#dark .dc-legend-item text {
+  fill: white;
+}
+
+.borderedCard {
+  border: 1px dashed lightgrey;
+  background: white;
+  height: 100%;
+  padding: 0 15px;
+}
+
+#dark .borderedCard {
+  border-color: #101010;
+  background: rgba(0, 0, 0, 0.125);
+}
+
+.container-fluid > .row {
+  margin-top: 15px;
+}
+
+.borderedCard > .col > .row > .dc-chart > legend,
+.borderedCard > .col-12 > .row > .dc-chart > legend {
+  font-size: 100%;
+}
+
+.btn-group {
+  margin-left: 0.5em;
+}
+
+/* -------end customization-------- */
+
+/* finally, import Bootstrap to set the changes! */
+@import "~bootstrap/scss/bootstrap";
+@import "~dc/style/dc.scss";
+
+div.dc-chart.col {
+  float: none;
+}
